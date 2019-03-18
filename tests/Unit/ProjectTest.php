@@ -19,7 +19,7 @@ class ProjectTest extends TestCase
     }
 
     /** @test */
-    function a_project_has_a_title()
+    function it_has_a_title()
     {
         $project = create('App\Project', ['title' => 'is title']);
 
@@ -27,7 +27,7 @@ class ProjectTest extends TestCase
     }
 
     /** @test */
-    function a_project_has_an_owner()
+    function it_has_an_owner()
     {
         $user = create('App\User');
         $project = create('App\Project', ['user_id' => $user->id]);

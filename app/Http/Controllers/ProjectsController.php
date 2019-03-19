@@ -29,6 +29,31 @@ class ProjectsController extends Controller
         return response($project, 200);
     }
 
+    public function destroy(Project $project)
+    {
+        $project->delete();
+
+        return response('Project have been deleted', 204);
+    }
+
+    public function update(Project $project)
+    {
+
+        $this->authorize('update', $project);
+
+        request()->validate([
+            'title' => ['required'],
+            'description' => ['required']
+        ]);
+
+        $project->update([
+           'title' => request('title'),
+           'description' => request('description')
+        ]);
+
+        return $project;
+    }
+
     public function create()
     {
     }

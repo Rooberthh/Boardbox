@@ -28,6 +28,21 @@ class CreateProjectTest extends TestCase
 
         $this->publishProject(['title' => 'Some title', 'description' => 'Some desc'])
             ->assertStatus(200);
+
+        $this->assertDatabaseHas('projects', ['title' => 'Some title', 'description' => 'Some desc']);
+    }
+
+    /** @test */
+    function authorized_users_can_delete_projects()
+    {
+        $this->signIn();
+
+        $project = create('App\Project', ['user_id' => auth()->id()]);
+
+        $this->json('DELETE', $project->path())
+            ->assertStatus(204);
+
+        $this->assertDatabaseMissing('projects', $project->toArray());
     }
 
     protected function publishProject($overrides = [])

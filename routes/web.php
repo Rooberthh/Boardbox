@@ -21,3 +21,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/projects/create', 'ProjectsController@create')->name('projects.create');
 Route::post('/projects', 'ProjectsController@store')->name('projects.store');
+Route::delete('/projects/{project}', 'ProjectsController@destroy')->name('projects.destroy');
+Route::patch('/projects/{project}', 'ProjectsController@update')->name('projects.update');

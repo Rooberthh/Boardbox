@@ -23,3 +23,5 @@ Route::get('/projects/create', 'ProjectsController@create')->name('projects.crea
 Route::post('/projects', 'ProjectsController@store')->name('projects.store');
 Route::delete('/projects/{project}', 'ProjectsController@destroy')->name('projects.destroy');
 Route::patch('/projects/{project}', 'ProjectsController@update')->name('projects.update');
+
+Route::get('/me', 'ProfilesController@show')->name('profile.show');

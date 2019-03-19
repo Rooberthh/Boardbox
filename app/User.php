@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'is_admin'
     ];
 
     /**
@@ -35,10 +35,22 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'is_admin' => 'boolean'
     ];
 
     public function projects()
     {
         return $this->hasMany(Project::class);
+    }
+
+    public function isAdmin(){
+        return in_array(
+            strtolower($this->email),
+            array_map('strtolower', config('boardbox.administrators'))
+        );
+    }
+
+    public function getIsAdminAttribute(){
+        return $this->isAdmin();
     }
 }

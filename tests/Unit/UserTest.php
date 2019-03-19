@@ -26,4 +26,14 @@
             );
         }
 
+        /** @test */
+        function a_user_can_be_an_admin()
+        {
+            $user = create('App\User', ['email' => 'roberth.evaldsson@hotmail.com']);
+
+            $this->assertTrue($user->isAdmin);
+
+            $this->assertFalse(create('App\User')->isAdmin);
+        }
+
     }

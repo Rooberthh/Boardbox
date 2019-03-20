@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Project;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ProjectsController extends Controller
 {
@@ -12,16 +14,32 @@ class ProjectsController extends Controller
         $this->middleware('auth')->except(['index', 'show']);
     }
 
+    public function index(Category $category)
+    {
+        $projects = $this->getProjects($category);
+
+        if(request()->wantsJson()){
+            return $projects;
+        }
+        return View('projects.index', [
+            'projects' => $projects
+        ]);
+    }
+
     public function store()
     {
-
         request()->validate([
             'title' => ['required', 'max:50'],
-            'description' => ['required']
+            'description' => ['required'],
+            'category_id' => [
+                'required',
+                Rule::exists('categories', 'id'),
+            ]
         ]);
 
         $project = Project::create([
             'user_id' => auth()->id(),
+            'category_id' => request('category_id'),
             'title' => request('title'),
             'description' => request('description')
         ]);
@@ -29,14 +47,15 @@ class ProjectsController extends Controller
         return response($project, 200);
     }
 
-    public function destroy(Project $project)
+    public function destroy($channel, Project $project)
     {
+
         $project->delete();
 
         return response('Project have been deleted', 204);
     }
 
-    public function update(Project $project)
+    public function update($category, Project $project)
     {
 
         $this->authorize('update', $project);
@@ -56,5 +75,16 @@ class ProjectsController extends Controller
 
     public function create()
     {
+    }
+
+    protected function getProjects(Category $category)
+    {
+        $projects = Project::latest()->with('category');
+
+        if ($category->exists) {
+            $projects->where('category_id', $category->id);
+        }
+
+        return $projects->get();
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    protected $fillable = ['title', 'description', 'user_id'];
+    protected $fillable = ['title', 'description', 'user_id', 'category_id'];
 
     public function owner()
     {
@@ -19,6 +19,6 @@ class Project extends Model
 
     public function path()
     {
-        return "/projects/{$this->id}";
+        return "/projects/{$this->category->slug}/{$this->id}";
     }
 }

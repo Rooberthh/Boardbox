@@ -35,12 +35,12 @@ $factory->define(Project::class, function (Faker $faker) {
             return factory('App\User')->create()->id;
         },
         'description' => $faker->sentence,
+        'category_id' => factory('App\Category')->create()->id
     ];
 });
 
 $factory->define(Category::class, function (Faker $faker) {
     $name = $faker->unique()->word;
-
     return [
         'name' => $name,
         'slug' => $name,

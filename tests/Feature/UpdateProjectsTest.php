@@ -6,7 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class UpdateThreadsTest extends TestCase
+class UpdatesProjectsTest extends TestCase
 {
     use RefreshDatabase;
     protected function setUp(): void
@@ -34,7 +34,7 @@ class UpdateThreadsTest extends TestCase
 
         $this->patchJson($project->path(), [
             'title' => 'is changed',
-            'description' => 'is changed'
+            'description' => 'is changed',
         ]);
 
         $this->assertEquals('is changed', $project->fresh()->title);

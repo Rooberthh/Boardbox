@@ -33,6 +33,18 @@ class CreateProjectTest extends TestCase
     }
 
     /** @test */
+    function a_project_requires_a_valid_category()
+    {
+        create('App\Category', [], 3);
+
+        $this->publishProject(['category_id' => null])
+            ->assertSessionHasErrors('category_id');
+
+        $this->publishProject(['category_id' => 100])
+            ->assertSessionHasErrors('category_id');
+    }
+
+    /** @test */
     function authorized_users_can_delete_projects()
     {
         $this->signIn();
@@ -42,16 +54,16 @@ class CreateProjectTest extends TestCase
         $this->json('DELETE', $project->path())
             ->assertStatus(204);
 
-        $this->assertDatabaseMissing('projects', $project->toArray());
+        $this->assertDatabaseMissing('projects', ['title' => $project->title, 'category_id' => $project->category_id]);
     }
 
     protected function publishProject($overrides = [])
     {
         $this->withExceptionHandling()->signIn();
 
-        $thread = make('App\Project', $overrides);
+        $project = make('App\Project', $overrides);
 
-        return $this->post(route('projects.store'), $thread->toArray());
+        return $this->post(route('projects.store'), $project->toArray());
     }
 
 }

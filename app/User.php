@@ -51,6 +51,5 @@ class User extends Authenticatable
     }
 
     public function getIsAdminAttribute(){
-        return $this->isAdmin();
-    }
+        return $this->isAdmin();    }
 }

@@ -1,5 +1,6 @@
 <?php
 
+    use App\Category;
     use App\Project;
     use App\User;
 use Illuminate\Support\Str;
@@ -34,5 +35,15 @@ $factory->define(Project::class, function (Faker $faker) {
             return factory('App\User')->create()->id;
         },
         'description' => $faker->sentence,
+    ];
+});
+
+$factory->define(Category::class, function (Faker $faker) {
+    $name = $faker->unique()->word;
+
+    return [
+        'name' => $name,
+        'slug' => $name,
+        'description' => $faker->sentence
     ];
 });

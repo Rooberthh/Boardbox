@@ -11,13 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ProjectsController@index');
+Route::get('/home', 'ProjectsController@index')->name('home');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/projects/create', 'ProjectsController@create')->name('projects.create');
 Route::get('/projects', 'ProjectsController@index')->name('projects.index');
@@ -27,4 +24,4 @@ Route::patch('/projects/{category}/{project}', 'ProjectsController@update')->nam
 
 Route::get('/projects/{category}', 'ProjectsController@index');
 
-Route::get('/me', 'ProfilesController@show')->name('profile.show');
+Route::get('/me', 'ProfilesController@show')->middleware('auth')->name('profile.show');

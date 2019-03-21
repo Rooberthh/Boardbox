@@ -39,6 +39,19 @@ $factory->define(Project::class, function (Faker $faker) {
     ];
 });
 
+$factory->state(Project::class, 'from_existing_categories_and_users', function (Faker $faker) {
+    return [
+        'title' => $faker->word,
+        'user_id' => function () {
+            return \App\User::all()->random()->id;
+        },
+        'description' => $faker->sentence,
+        'category_id' => function () {
+            return \App\Category::all()->random()->id;
+        }
+    ];
+});
+
 $factory->define(Category::class, function (Faker $faker) {
     $name = $faker->unique()->word;
     return [

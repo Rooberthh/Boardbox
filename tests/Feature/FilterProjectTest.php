@@ -17,7 +17,6 @@ class FilterProjectTest extends TestCase
         parent::setUp();
 
         $this->project = create('App\Project');
-
     }
 
 

@@ -1,11 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-    @forelse($projects as $project)
-        <h3>{{ $project->title }}</h3>
-        <p>{{ $project->description }}</p>
-        <p>{{ $project->category->name }}</p>
-    @empty
-        <p>There are no projects in this category.</p>
-    @endforelse
+    <div class="flex items-center mb-3">
+        <a class="btn btn-blue" href="{{ route('projects.create') }}">New Project</a>
+    </div>
+    <div class="flex flex-wrap -mx-3">
+        @forelse($projects as $project)
+
+                @include('projects.card')
+
+        @empty
+            <p>There are no projects in this category.</p>
+        @endforelse
+    </div>
 @endsection

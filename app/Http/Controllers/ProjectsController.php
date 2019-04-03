@@ -75,6 +75,7 @@ class ProjectsController extends Controller
 
     public function create()
     {
+        return View('projects.create');
     }
 
     protected function getProjects(Category $category)

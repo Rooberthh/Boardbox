@@ -44,7 +44,11 @@ class ProjectsController extends Controller
             'description' => request('description')
         ]);
 
-        return response($project, 200);
+        if(request()->wantsJson()){
+            return response($project, 200);
+        }
+
+        return redirect('projects.index');
     }
 
     public function destroy($channel, Project $project)
@@ -75,7 +79,9 @@ class ProjectsController extends Controller
 
     public function create()
     {
-        return View('projects.create');
+        return View('projects.create', [
+            'categories' => Category::all()
+        ]);
     }
 
     protected function getProjects(Category $category)

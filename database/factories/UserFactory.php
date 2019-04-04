@@ -47,7 +47,7 @@ $factory->state(Project::class, 'from_existing_categories_and_users', function (
         },
         'description' => $faker->sentence,
         'category_id' => function () {
-            return \App\Category::all()->random()->id;
+            return Category::all()->random()->id;
         }
     ];
 });

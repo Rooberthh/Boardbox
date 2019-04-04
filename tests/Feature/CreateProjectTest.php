@@ -27,7 +27,7 @@ class CreateProjectTest extends TestCase
         $this->signIn();
 
         $this->publishProject(['title' => 'Some title', 'description' => 'Some desc'])
-            ->assertStatus(200);
+            ->assertRedirect('projects.index');
 
         $this->assertDatabaseHas('projects', ['title' => 'Some title', 'description' => 'Some desc']);
     }

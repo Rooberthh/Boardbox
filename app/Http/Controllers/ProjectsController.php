@@ -48,7 +48,7 @@ class ProjectsController extends Controller
             return response($project, 200);
         }
 
-        return redirect('projects.index');
+        return redirect(route('projects.index'));
     }
 
     public function destroy($channel, Project $project)

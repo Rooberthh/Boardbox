@@ -19,8 +19,10 @@ Auth::routes();
 Route::get('/projects/create', 'ProjectsController@create')->name('projects.create');
 Route::get('/projects', 'ProjectsController@index')->name('projects.index');
 Route::post('/projects', 'ProjectsController@store')->name('projects.store');
+Route::get('/projects/{category}/{project}', 'ProjectsController@show')->name('projects.show');
 Route::delete('/projects/{category}/{project}', 'ProjectsController@destroy')->name('projects.destroy');
 Route::patch('/projects/{category}/{project}', 'ProjectsController@update')->name('projects.update');
+
 
 Route::get('/projects/{category}', 'ProjectsController@index');
 

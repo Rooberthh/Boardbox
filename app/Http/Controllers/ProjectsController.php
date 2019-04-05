@@ -51,7 +51,7 @@ class ProjectsController extends Controller
         return redirect(route('projects.index'));
     }
 
-    public function destroy($channel, Project $project)
+    public function destroy($category, Project $project)
     {
 
         $project->delete();
@@ -82,6 +82,11 @@ class ProjectsController extends Controller
         return View('projects.create', [
             'categories' => Category::all()
         ]);
+    }
+
+    public function show($category, Project $project)
+    {
+        return view('projects.show', ['project' => $project]);
     }
 
     protected function getProjects(Category $category)

@@ -1,9 +1,9 @@
 <nav class="bg-red text-white py-2">
     <div class="container mx-auto">
         <div class="flex justify-between items-center py-1">
-            <h1>
+            <a href="/" class="text-3xl text-white no-underline font-bold">
                 {{ Config('app.name', 'Boardbox') }}
-            </h1>
+            </a>
 
             <div>
                 <!-- Right Side Of Navbar -->

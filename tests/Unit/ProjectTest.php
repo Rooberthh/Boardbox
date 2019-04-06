@@ -35,4 +35,14 @@ class ProjectTest extends TestCase
         $this->assertEquals($user->id, $project->owner->id);
         $this->assertInstanceOf('App\User', $this->project->owner);
     }
+
+    /** @test */
+    function it_can_consist_of_tasks()
+    {
+        $project = create('App\Project');
+        $task = $project->addTask('New Task');
+
+        $this->assertCount(1, $project->tasks);
+        $this->assertTrue($project->tasks->contains($task));
+    }
 }

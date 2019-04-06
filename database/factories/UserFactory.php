@@ -2,6 +2,7 @@
 
     use App\Category;
     use App\Project;
+    use App\Task;
     use App\User;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
@@ -49,6 +50,16 @@ $factory->state(Project::class, 'from_existing_categories_and_users', function (
         'category_id' => function () {
             return Category::all()->random()->id;
         }
+    ];
+});
+
+$factory->define(Task::class, function (Faker $faker) {
+    return [
+        'project_id' => function(){
+            return factory('App\Project')->create()->id;
+        },
+        'body' => $faker->sentence,
+        'completed' => false
     ];
 });
 

@@ -44,7 +44,7 @@ $factory->state(Project::class, 'from_existing_categories_and_users', function (
     return [
         'title' => $faker->word,
         'user_id' => function () {
-            return \App\User::all()->random()->id;
+            return User::all()->random()->id;
         },
         'description' => $faker->sentence,
         'category_id' => function () {

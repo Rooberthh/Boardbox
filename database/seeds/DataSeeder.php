@@ -15,31 +15,31 @@ class DataSeeder extends Seeder
     {
         collect([
             [
-                'name' => 'Front-End',
+                'name' => 'front-end',
                 'description' => 'This category is for front-end',
                 'color' => '#3c40c6'
             ],
             [
-                'name' => 'Back-end',
+                'name' => 'back-end',
                 'description' => 'This category is for backend',
                 'color' => '#0fbcf9'
             ],
             [
-                'name' => 'Dev-ops',
+                'name' => 'dev-ops',
                 'description' => 'This category is for dev ops.',
                 'color' => '#f53b57'
             ],
             [
-                'name' => 'Graphic Design',
+                'name' => 'graphic-design',
                 'description' => 'This category is for graphic design.',
                 'color' => '#05c46b'
             ],
-        ])->each(function ($channel) {
+        ])->each(function ($category) {
             factory(Category::class)->create([
-                'name' => $channel['name'],
-                'description' => $channel['description'],
-                'color' => $channel['color'],
-                'slug' => $channel['name']
+                'name' => $category['name'],
+                'description' => $category['description'],
+                'color' => $category['color'],
+                'slug' => $category['name']
             ]);
         });
 

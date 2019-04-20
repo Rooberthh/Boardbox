@@ -27,6 +27,6 @@ Route::post('/projects/{category}/{project}/tasks', 'ProjectTasksController@stor
 Route::patch('/projects/{category}/{project}/{task}', 'ProjectTasksController@update')->name('projectTask.update');
 
 
-Route::get('/projects/{category}', 'ProjectsController@index');
+Route::get('/projects/{category}', 'ProjectsController@index')->name('category.index');
 
 Route::get('/me', 'ProfilesController@show')->middleware('auth')->name('profile.show');

@@ -9,5 +9,13 @@
         <div class="text-grey-dark">
             {{ str_limit($project->description, 300) }}
         </div>
+
+        <div class="mt-3">
+            <a href="{{ route('category.index', ['category' => $project->category]) }}"
+                class="btn btn-blue"
+            >
+                {{ $project->category->name }}
+            </a>
+        </div>
     </div>
 </div>

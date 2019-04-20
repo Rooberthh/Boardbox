@@ -22,7 +22,8 @@ class ProjectsController extends Controller
             return $projects;
         }
         return View('projects.index', [
-            'projects' => $projects
+            'projects' => $projects,
+            'user_projects' => auth()->user()->projects->take(3)
         ]);
     }
 

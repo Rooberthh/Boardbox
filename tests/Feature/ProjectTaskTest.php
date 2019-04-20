@@ -82,5 +82,4 @@ class ProjectTaskTest extends TestCase
             'completed' => true
         ]);
     }
-
 }

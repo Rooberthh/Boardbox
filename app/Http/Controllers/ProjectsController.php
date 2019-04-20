@@ -53,6 +53,7 @@ class ProjectsController extends Controller
 
     public function destroy($category, Project $project)
     {
+        $this->authorize('update', $project);
 
         $project->delete();
 

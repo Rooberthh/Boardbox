@@ -4,13 +4,14 @@
     <div class="flex items-center mb-3">
         <a class="btn btn-blue" href="{{ route('projects.create') }}">New Project</a>
     </div>
-
-    <h3 class="text-grey-darkest mb-5">Your projects</h3>
-    <div class="flex flex-wrap -mx-3">
-        @foreach($user_projects as $project)
-            @include('projects.card')
-        @endforeach
-    </div>
+    @if(auth()->user())
+        <h3 class="text-grey-darkest mb-5">Your projects</h3>
+        <div class="flex flex-wrap -mx-3">
+            @foreach($user_projects as $project)
+                @include('projects.card')
+            @endforeach
+        </div>
+    @endif
 
     <h3 class="text-grey-darkest mb-5">Projects</h3>
 

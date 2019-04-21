@@ -21,9 +21,16 @@ class ProjectsController extends Controller
         if(request()->wantsJson()){
             return $projects;
         }
+
+        if(auth()->user()){
+            $user_projects = auth()->user()->projects->take(3);
+        } else {
+            $user_projects = null;
+        }
+
         return View('projects.index', [
             'projects' => $projects,
-            'user_projects' => auth()->user()->projects->take(3)
+            'user_projects' => $user_projects
         ]);
     }
 

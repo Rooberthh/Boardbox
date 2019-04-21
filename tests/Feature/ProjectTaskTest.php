@@ -37,7 +37,7 @@ class ProjectTaskTest extends TestCase
             ->assertRedirect($this->project->path());
 
         $this->assertDatabaseHas('tasks', [
-            'body' => 'new Task'
+            'body' => 'New task'
         ]);
     }
 

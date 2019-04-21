@@ -10,12 +10,20 @@
             {{ str_limit($project->description, 300) }}
         </div>
 
-        <div class="mt-3">
+        <div class="mt-3 flex">
             <a href="{{ route('category.index', ['category' => $project->category]) }}"
                 class="btn btn-blue"
             >
                 {{ $project->category->name }}
             </a>
+            @can('update', $project)
+                <form method="POST" class="ml-auto" action="{{ route('projects.destroy', ['category' => $project->category, 'project' => $project]) }}">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" class="btn text-grey-darkest">Delete</button>
+                </form>
+            @endcan
+
         </div>
     </div>
 </div>

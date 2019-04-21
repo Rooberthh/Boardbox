@@ -10,6 +10,10 @@
  * @import "tailwindcss/preflight";
  */
 
+body {
+  min-height: 100vh;
+}
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
@@ -565,6 +569,13 @@ table {
  * @import "components/buttons";
  * @import "components/forms";
  */
+
+.card {
+  background-color: #fff;
+  padding: 1.25rem;
+  border-radius: .5rem;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+}
 
 .btn {
   font-weight: 700;
@@ -6204,10 +6215,6 @@ table {
  * @import "utilities/background-patterns";
  * @import "utilities/skew-transforms";
  */
-
-body {
-  min-height: 100vh;
-}
 
 @media (min-width: 576px) {
   .sm\:list-reset {

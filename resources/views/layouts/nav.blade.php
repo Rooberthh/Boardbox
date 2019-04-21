@@ -16,6 +16,10 @@
                             <a class="text-white no-underline" href="{{ route('register') }}">{{ __('Register') }}</a>
                         @endif
                     @else
+                        <a class="text-white no-underline mr-6" href="{{ route('profile.show') }}">
+                            {{ auth()->user()->name }}
+                        </a>
+
                         <a class="text-white no-underline mr-6" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">

@@ -39,5 +39,4 @@ class UpdatesProjectsTest extends TestCase
 
         $this->assertEquals('is changed', $project->fresh()->title);
     }
-
 }

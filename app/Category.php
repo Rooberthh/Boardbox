@@ -10,6 +10,16 @@ class Category extends Model
         'name', 'description', 'color'
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($category){
+            $category->projects->each->delete();
+        });
+    }
+
+
     public function getRouteKeyName()
     {
         return 'slug';

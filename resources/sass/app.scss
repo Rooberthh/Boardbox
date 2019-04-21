@@ -9,6 +9,10 @@
  *
  * @import "tailwindcss/preflight";
  */
+body{
+    min-height: 100vh;
+}
+
 @tailwind preflight;
 
 /**
@@ -35,6 +39,8 @@
  * @import "components/buttons";
  * @import "components/forms";
  */
+
+@import 'components/card';
 
 .btn {
     @apply font-bold py-2 px-4 rounded no-underline;
@@ -72,6 +78,4 @@
  * @import "utilities/skew-transforms";
  */
 
-body{
-    min-height: 100vh;
-}
+

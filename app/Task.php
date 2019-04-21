@@ -28,4 +28,10 @@ class Task extends Model
     {
         $this->update(['completed' => false]);
     }
+
+
+    public function path()
+    {
+        return "/projects/{$this->project->category->name}/{$this->project->id}/tasks/{$this->id}";
+    }
 }

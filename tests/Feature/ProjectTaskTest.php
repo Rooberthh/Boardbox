@@ -48,12 +48,7 @@ class ProjectTaskTest extends TestCase
 
         $task = create('App\Task', ['project_id' => $this->project->id]);
 
-        $this->patch(route('projectTask.update', ['category' => $this->project->category,
-                                                  'project' => $this->project,
-                                                  'task' => $task,
-                                                  'body' => 'updated body',
-                                                    'completed' => true
-                                                    ]))
+        $this->patch($task->path(), ['body' => 'updated body', 'completed' => true])
             ->assertStatus(403);
 
         $this->assertDatabaseMissing('tasks', [
@@ -69,12 +64,7 @@ class ProjectTaskTest extends TestCase
 
         $task = create('App\Task', ['project_id' => $this->project->id]);
 
-        $this->patch(route('projectTask.update', ['category' => $this->project->category,
-                                                  'project' => $this->project,
-                                                  'task' => $task,
-                                                  'body' => 'updated body',
-                                                    'completed' => true ]))
-
+        $this->patch($task->path(), ['body' => 'updated body', 'completed' => true])
             ->assertRedirect($this->project->path());
 
         $this->assertDatabaseHas('tasks', [

@@ -35,7 +35,7 @@
         </div>
 
         <div class="lg:w-1/4 px-3">
-            <div class="w-full lg:py-8">
+            <div class="w-full mt-8">
                 <div class="bg-white rounded shadow p-5 min-h-400">
                     <a href="{{ $project->path() }}" class="text-grey-darkest no-underline">
                         <h3 class="font-normal py-4 text-xl border-l-4 border-red -ml-5 pl-4">

@@ -23,7 +23,6 @@
                     <button type="submit" class="btn text-grey-darkest">Delete</button>
                 </form>
             @endcan
-
         </div>
     </div>
 </div>

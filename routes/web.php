@@ -27,6 +27,7 @@ Route::patch('/projects/{category}/{project}', 'ProjectsController@update')->nam
 
 Route::post('/projects/{category}/{project}/tasks', 'ProjectTasksController@store')->name('projectTask.store');
 Route::patch('/projects/{category}/{project}/tasks/{task}', 'ProjectTasksController@update')->name('projectTask.update');
+Route::delete('/projects/{category}/{project}/tasks/{task}', 'ProjectTasksController@destroy')->name('projectTask.destroy');
 
 
 Route::get('/projects/{category}', 'ProjectsController@index')->name('category.index');

@@ -40,4 +40,13 @@ class ProjectTasksController extends Controller
 
         return response($task, 201);
     }
+
+    public function destroy(Category $category, Project $project, Task $task)
+    {
+        $this->authorize('update', $project);
+
+        $task->delete();
+
+        return response('Task have been deleted', 200);
+    }
 }

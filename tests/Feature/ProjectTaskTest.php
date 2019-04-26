@@ -72,4 +72,19 @@ class ProjectTaskTest extends TestCase
             'completed' => true
         ]);
     }
+
+    /** @test */
+    function a_task_can_be_deleted()
+    {
+        $this->signIn($this->user);
+        $task = create('App\Task', ['project_id' => $this->project->id, 'body' => 'deleted task']);
+
+        $this->delete($task->path(), $task->toArray())
+            ->assertStatus(200);
+
+        $this->assertDatabaseMissing('tasks', [
+            'body' => 'deleted task',
+            'completed' => false
+        ]);
+    }
 }

@@ -20,9 +20,7 @@ class ProjectTasksController extends Controller
 
         request()->validate(['body' => 'required']);
 
-        $project->addTask(request('body'));
-
-        return redirect($project->path());
+        return $project->addTask(request('body'));
     }
 
     /**
@@ -40,6 +38,6 @@ class ProjectTasksController extends Controller
 
         request('completed') ? $task->completed() : $task->incomplete();
 
-        return redirect($project->path());
+        return response($task, 201);
     }
 }

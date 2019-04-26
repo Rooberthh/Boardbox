@@ -18,10 +18,6 @@ class ProjectsController extends Controller
     {
         $projects = $this->getProjects($category);
 
-        if(request()->wantsJson()){
-            return $projects;
-        }
-
         if(auth()->user()){
             $user_projects = auth()->user()->projects->take(3);
         } else {

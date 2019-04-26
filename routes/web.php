@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('api/projects/{category}/{project}/tasks', 'Api\ProjectTasksController@index');
+
 Route::get('/', 'ProjectsController@index');
 Route::get('/home', 'ProjectsController@index')->name('home');
 

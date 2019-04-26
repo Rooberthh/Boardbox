@@ -17,10 +17,14 @@ window.Vue = require('vue');
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-// const files = require.context('./', true, /\.vue$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+//const files = require.context('./', true, /\.vue$/i);
+//files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component("project-view", require('./pages/ProjectView.vue').default);
+
+Vue.component("tasks", require('./components/Tasks.vue').default);
+Vue.component("task", require('./components/Task.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

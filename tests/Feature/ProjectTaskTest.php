@@ -34,7 +34,7 @@ class ProjectTaskTest extends TestCase
         $this->signIn($this->user);
 
         $this->post(route('projectTask.store', ['category' => $this->project->category, 'project' => $this->project, 'body' => 'New task']))
-            ->assertRedirect($this->project->path());
+            ->assertStatus(201);
 
         $this->assertDatabaseHas('tasks', [
             'body' => 'New task'
@@ -65,7 +65,7 @@ class ProjectTaskTest extends TestCase
         $task = create('App\Task', ['project_id' => $this->project->id]);
 
         $this->patch($task->path(), ['body' => 'updated body', 'completed' => true])
-            ->assertRedirect($this->project->path());
+            ->assertStatus(201);
 
         $this->assertDatabaseHas('tasks', [
             'body' => 'updated body',

@@ -1857,6 +1857,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['task'],
@@ -1867,7 +1868,8 @@ __webpack_require__.r(__webpack_exports__);
         body: this.task.body,
         completed: this.task.completed
       },
-      endpoint: location.pathname + '/tasks/' + this.task.id
+      endpoint: location.pathname + '/tasks/' + this.task.id,
+      creator_id: this.task.project.user_id
     };
   },
   methods: {
@@ -1885,6 +1887,15 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response.data);
       });
       this.$emit('deleted');
+    }
+  },
+  computed: {
+    canUpdate: function canUpdate() {
+      var _this = this;
+
+      return this.authorize(function (user) {
+        return _this.creator_id === user.id;
+      });
     }
   }
 });
@@ -37841,14 +37852,16 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _c("i", {
-        staticClass: "fas fa-trash",
-        on: {
-          click: function($event) {
-            return _vm.remove()
-          }
-        }
-      })
+      _vm.canUpdate
+        ? _c("i", {
+            staticClass: "fas fa-trash",
+            on: {
+              click: function($event) {
+                return _vm.remove()
+              }
+            }
+          })
+        : _vm._e()
     ])
   ])
 }
@@ -50100,6 +50113,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -50140,7 +50154,17 @@ if (token) {
  * for events that are broadcast by Laravel. Echo and event broadcasting
  * allows your team to easily build robust real-time web applications.
  */
-// import Echo from 'laravel-echo'
+
+
+window.Vue.prototype.authorize = function (handler) {
+  var user = window.App.user;
+  return user ? handler(user) : false;
+};
+
+Vue.prototype.signedIn = window.App.signedIn;
+Vue.prototype.user = window.App.user;
+var user = window.App.user;
+var roles = window.App.roles; // import Echo from 'laravel-echo'
 // window.Pusher = require('pusher-js');
 // window.Echo = new Echo({
 //     broadcaster: 'pusher',

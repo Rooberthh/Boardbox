@@ -14,6 +14,10 @@ class Task extends Model
         'completed' => 'boolean'
     ];
 
+    protected $with = [
+        'project'
+    ];
+
     function project()
     {
         return $this->belongsTo(Project::class);

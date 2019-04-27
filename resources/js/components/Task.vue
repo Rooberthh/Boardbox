@@ -6,7 +6,8 @@
 
 
                 <input type="checkbox" name="completed" v-model="form.completed" @change="update()">
-                <i class="fas fa-trash" @click="remove()"></i>
+
+                <i v-if="canUpdate" class="fas fa-trash" @click="remove()"></i>
             </div>
     </div>
 </template>
@@ -23,7 +24,8 @@
                     body: this.task.body,
                     completed: this.task.completed,
                 },
-                endpoint: location.pathname + '/tasks/' + this.task.id
+                endpoint: location.pathname + '/tasks/' + this.task.id,
+                creator_id: this.task.project.user_id
             }
         },
         methods: {
@@ -46,6 +48,11 @@
                     });
 
                 this.$emit('deleted');
+            }
+        },
+        computed: {
+            canUpdate(){
+                return this.authorize(user => this.creator_id === user.id);
             }
         }
     }

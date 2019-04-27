@@ -1,4 +1,4 @@
-
+window.Vue = require('vue');
 window._ = require('lodash');
 
 /**
@@ -43,6 +43,18 @@ if (token) {
  * for events that are broadcast by Laravel. Echo and event broadcasting
  * allows your team to easily build robust real-time web applications.
  */
+
+window.Vue.prototype.authorize = function (handler) {
+    let user = window.App.user;
+
+    return user ? handler(user) : false;
+};
+
+Vue.prototype.signedIn = window.App.signedIn;
+Vue.prototype.user = window.App.user;
+
+let user = window.App.user;
+let roles = window.App.roles;
 
 // import Echo from 'laravel-echo'
 

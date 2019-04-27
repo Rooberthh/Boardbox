@@ -61,7 +61,11 @@ class ProjectsController extends Controller
 
         $project->delete();
 
-        return response('Project have been deleted', 204);
+        if(request()->wantsJson()) {
+            return response('Project have been deleted', 204);
+        }
+
+        return redirect(route('home'));
     }
 
     public function update($category, Project $project)

@@ -2002,6 +2002,11 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         _this.editing = false;
       });
+    },
+    destroy: function destroy() {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"](location.pathname)["catch"](function (error) {
+        console.log(error);
+      });
     }
   }
 });

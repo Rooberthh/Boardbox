@@ -25,8 +25,7 @@
 
                         @can('update', $project)
                             <div class="flex">
-                                <i @click="destroy" class="ml-auto fas fa-trash cursor-pointer mx-3 text-grey-darkest"></i>
-                                <i @click="edit" class="fas fa-edit cursor-pointer mx-3 text-grey-darkest"></i>
+                                <button @click="edit" type="button" class="btn btn-outline ml-auto">Edit <i class="fas fa-edit"></i> </button>
                             </div>
                         @endcan
 
@@ -54,6 +53,12 @@
                                 <button @click="edit" type="button" class="btn btn-outline mr-auto">Cancel</button>
                                 <button @click="update" class="btn btn-outline ml-auto">Update</button>
                             </div>
+
+                            <form method="POST" class="mr-auto" action="{{ route('projects.destroy', ['category' => $project->category, 'project' => $project]) }}">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn text-grey-darkest">Delete</button>
+                            </form>
                         @endcan
 
                     </div>

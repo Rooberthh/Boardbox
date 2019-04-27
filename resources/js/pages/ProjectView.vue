@@ -18,14 +18,21 @@
             edit() {
                 this.editing = !this.editing;
             },
-            update() {
 
+            update() {
                 axios.patch(location.pathname, this.form)
                     .catch(error => {
                         console.log(error);
                     })
                     .then(response => {
                         this.editing = false;
+                    });
+            },
+
+            destroy() {
+                axios.delete(location.pathname)
+                    .catch(error => {
+                        console.log(error)
                     });
             }
         }

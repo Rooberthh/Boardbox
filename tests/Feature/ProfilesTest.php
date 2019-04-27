@@ -18,4 +18,16 @@ class ProfilesTest extends TestCase
         $this->get(route('profile.show'))
             ->assertSee(auth()->user()->name);
     }
+
+    /** @test */
+    function a_users_profile_can_be_updated()
+    {
+        $user = create('App\User');
+        $this->signIn($user);
+
+        $this->patchJson('/me', ['name' => 'updatedName', 'email' => 'updated@email.com'])
+            ->assertStatus(200);
+
+        $this->assertDatabaseHas('users', $user->fresh()->toArray());
+    }
 }

@@ -15,22 +15,22 @@ class DataSeeder extends Seeder
     {
         collect([
             [
-                'name' => 'front-end',
+                'name' => 'Front End',
                 'description' => 'This category is for front-end',
                 'color' => '#3c40c6'
             ],
             [
-                'name' => 'back-end',
+                'name' => 'Back End',
                 'description' => 'This category is for backend',
                 'color' => '#0fbcf9'
             ],
             [
-                'name' => 'dev-ops',
+                'name' => 'Dev Ops',
                 'description' => 'This category is for dev ops.',
                 'color' => '#f53b57'
             ],
             [
-                'name' => 'graphic-design',
+                'name' => 'Graphic Design',
                 'description' => 'This category is for graphic design.',
                 'color' => '#05c46b'
             ],

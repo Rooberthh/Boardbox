@@ -8,6 +8,15 @@ class Project extends Model
 {
     protected $fillable = ['title', 'description', 'user_id', 'category_id'];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($project){
+            $project->tasks->each->delete();
+        });
+    }
+
     public function owner()
     {
         return $this->belongsTo(User::class, 'user_id');

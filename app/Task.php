@@ -18,6 +18,14 @@ class Task extends Model
         'project'
     ];
 
+    protected $appends = [
+        'creator'
+    ];
+
+    function getCreatorAttribute(){
+        return $this->project->user_id;
+    }
+
     function project()
     {
         return $this->belongsTo(Project::class);

@@ -24,8 +24,8 @@
                     body: this.task.body,
                     completed: this.task.completed,
                 },
+                creator: this.task.creator,
                 endpoint: location.pathname + '/tasks/' + this.task.id,
-                creator_id: this.task.project.user_id
             }
         },
         methods: {
@@ -52,7 +52,7 @@
         },
         computed: {
             canUpdate(){
-                return this.authorize(user => this.creator_id === user.id);
+                return this.authorize(user => this.creator === user.id);
             }
         }
     }

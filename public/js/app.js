@@ -1868,8 +1868,8 @@ __webpack_require__.r(__webpack_exports__);
         body: this.task.body,
         completed: this.task.completed
       },
-      endpoint: location.pathname + '/tasks/' + this.task.id,
-      creator_id: this.task.project.user_id
+      creator: this.task.creator,
+      endpoint: location.pathname + '/tasks/' + this.task.id
     };
   },
   methods: {
@@ -1894,7 +1894,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       return this.authorize(function (user) {
-        return _this.creator_id === user.id;
+        return _this.creator === user.id;
       });
     }
   }

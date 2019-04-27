@@ -54,7 +54,6 @@ Vue.prototype.signedIn = window.App.signedIn;
 Vue.prototype.user = window.App.user;
 
 let user = window.App.user;
-let roles = window.App.roles;
 
 // import Echo from 'laravel-echo'
 

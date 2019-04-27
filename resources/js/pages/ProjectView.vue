@@ -1,8 +1,33 @@
 <script>
     import tasks from '../components/Tasks';
+    import axios from 'axios';
+
     export default {
-        name: "project-view",
         props: ['project'],
-        components: { tasks }
+        components: { tasks },
+        data() {
+            return {
+                editing: false,
+                form: {
+                    description: this.project.description,
+                    title: this.project.title
+                }
+            }
+        },
+        methods: {
+            edit() {
+                this.editing = !this.editing;
+            },
+            update() {
+
+                axios.patch(location.pathname, this.form)
+                    .catch(error => {
+                        console.log(error);
+                    })
+                    .then(response => {
+                        this.editing = false;
+                    });
+            }
+        }
     }
 </script>

@@ -11,27 +11,52 @@
                 </div>
             </div>
 
-            <div class="lg:w-1/4 px-3">
+            <div class="lg:w-1/4 px-3" v-if="!editing">
                 <div class="w-full mt-8">
                     <div class="bg-white rounded shadow p-5 min-h-400">
                         <a href="{{ $project->path() }}" class="text-grey-darkest no-underline">
-                            <h3 class="font-normal py-4 text-xl border-l-4 border-red -ml-5 pl-4">
-                                {{ $project->title }}
+                            <h3 class="font-normal py-4 text-xl border-l-4 border-red -ml-5 pl-4" v-text="form.title">
                             </h3>
                         </a>
 
                         <div class="text-grey-dark">
-                            <p>{{  $project->description }}</p>
+                            <p v-text="form.description"></p>
                         </div>
 
                         @can('update', $project)
                             <div class="flex">
-                                <button type="button" class="btn btn-outline">Edit</button>
+                                <button @click="edit" type="button" class="btn btn-outline">Edit</button>
                                 <form method="POST" class="ml-auto" action="{{ route('projects.destroy', ['category' => $project->category, 'project' => $project]) }}">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn text-grey-darkest">Delete</button>
                                 </form>
+                            </div>
+                        @endcan
+
+                    </div>
+                </div>
+            </div>
+
+            <div v-else class="lg:w-1/4 px-3">
+                <div class="w-full mt-8">
+                    <div class="bg-white rounded shadow p-5 min-h-400">
+
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-2 leading-tight focus:outline-none focus:shadow-outline"
+                               v-model="form.title">
+
+                        <div class="text-grey-dark">
+                            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-2 leading-tight focus:outline-none focus:shadow-outline"
+                                      rows="5"
+                                      v-model="form.description"
+                                      >
+                            </textarea>
+                        </div>
+
+                        @can('update', $project)
+                            <div class="flex">
+                                <button @click="edit" type="button" class="btn btn-outline mr-auto">Cancel</button>
+                                <button @click="update" class="btn btn-outline ml-auto">Update</button>
                             </div>
                         @endcan
 

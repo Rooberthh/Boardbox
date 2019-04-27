@@ -70,7 +70,6 @@ class ProjectsController extends Controller
 
     public function update($category, Project $project)
     {
-
         $this->authorize('update', $project);
 
         request()->validate([

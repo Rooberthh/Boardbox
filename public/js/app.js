@@ -1972,12 +1972,37 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Tasks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Tasks */ "./resources/js/components/Tasks.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "project-view",
   props: ['project'],
   components: {
     tasks: _components_Tasks__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      editing: false,
+      form: {
+        description: this.project.description,
+        title: this.project.title
+      }
+    };
+  },
+  methods: {
+    edit: function edit() {
+      this.editing = !this.editing;
+    },
+    update: function update() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.patch(location.pathname, this.form)["catch"](function (error) {
+        console.log(error);
+      }).then(function (response) {
+        _this.editing = false;
+      });
+    }
   }
 });
 
@@ -50161,8 +50186,7 @@ window.Vue.prototype.authorize = function (handler) {
 
 Vue.prototype.signedIn = window.App.signedIn;
 Vue.prototype.user = window.App.user;
-var user = window.App.user;
-var roles = window.App.roles; // import Echo from 'laravel-echo'
+var user = window.App.user; // import Echo from 'laravel-echo'
 // window.Pusher = require('pusher-js');
 // window.Echo = new Echo({
 //     broadcaster: 'pusher',

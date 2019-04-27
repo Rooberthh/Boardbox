@@ -42,6 +42,10 @@ body{
 
 @import 'components/card';
 
+.input {
+    @apply shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-2 .leading-tight;
+}
+
 .btn {
     @apply font-bold py-2 px-4 rounded no-underline;
 }

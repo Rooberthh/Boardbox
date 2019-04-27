@@ -8,7 +8,7 @@
             <label class="block text-grey-darker text-sm font-bold mb-2" for="email">
                 Email
             </label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-2 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email" name="email">
+            <input class="input focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email" name="email">
             @if ($errors->has('email'))
             <span class="text-red text-xs italic" role="alert">
                 <strong>{{ $errors->first('email') }}</strong>
@@ -19,7 +19,7 @@
             <label class="block text-grey-darker text-sm font-bold mb-2" for="password">
                 Password
             </label>
-            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-2 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" name="password">
+            <input class="input focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" name="password">
 
             @if ($errors->has('password'))
             <span class="text-red text-xs italic" role="alert">

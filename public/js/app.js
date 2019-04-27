@@ -1972,8 +1972,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Tasks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Tasks */ "./resources/js/components/Tasks.vue");
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "project-view",
@@ -37783,7 +37781,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "bg-white rounded shadow p-4 mb-3" }, [
+  return _c("div", { staticClass: "card mb-3" }, [
     _c("div", { staticClass: "flex items-center" }, [
       _c("input", {
         directives: [

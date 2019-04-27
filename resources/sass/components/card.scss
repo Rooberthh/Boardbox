@@ -1,4 +1,11 @@
 .card {
     @apply .bg-white .p-5 .rounded-lg .shadow;
+}
 
+.pill {
+    @apply .py-2 .px-4 .shadow-md .no-underline .text-sm .rounded-full;
+}
+
+.pill-red {
+    @apply .bg-red .text-white .font-sans .font-semibold;
 }

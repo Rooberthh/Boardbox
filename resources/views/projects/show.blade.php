@@ -26,6 +26,7 @@
 
                         @can('update', $project)
                             <div class="flex">
+                                <button type="button" class="btn btn-outline">Edit</button>
                                 <form method="POST" class="ml-auto" action="{{ route('projects.destroy', ['category' => $project->category, 'project' => $project]) }}">
                                     @csrf
                                     @method('delete')

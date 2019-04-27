@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white rounded shadow p-4 mb-3">
+    <div class="card mb-3">
 
             <div class="flex items-center">
                 <input type="text" class="text-default w-full" name="body" v-model="form.body">

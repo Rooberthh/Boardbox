@@ -577,6 +577,24 @@ table {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
 }
 
+.pill {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);
+  text-decoration: none;
+  font-size: .875rem;
+  border-radius: 9999px;
+}
+
+.pill-red {
+  background-color: #e3342f;
+  color: #fff;
+  font-family: system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-weight: 600;
+}
+
 .btn {
   font-weight: 700;
   padding-top: .5rem;

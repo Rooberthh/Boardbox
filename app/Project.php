@@ -41,4 +41,14 @@ class Project extends Model
     {
         return "/projects/{$this->category->slug}/{$this->id}";
     }
+
+    public function invite(User $user)
+    {
+        $this->members()->attach($user);
+    }
+
+    public function members()
+    {
+        return $this->belongsToMany(User::class, 'project_members')->withTimestamps();
+    }
 }

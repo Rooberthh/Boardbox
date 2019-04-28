@@ -40,16 +40,28 @@ class User extends Authenticatable
 
     public function projects()
     {
-        return $this->hasMany(Project::class);
+        return $this->hasMany(Project::class)->latest('updated_at');
     }
 
-    public function isAdmin(){
+    public function isAdmin()
+    {
         return in_array(
             strtolower($this->email),
             array_map('strtolower', config('boardbox.administrators'))
         );
     }
 
-    public function getIsAdminAttribute(){
-        return $this->isAdmin();    }
+    public function getIsAdminAttribute()
+    {
+        return $this->isAdmin();
+    }
+
+    public function accessibleProjects()
+    {
+        return Project::where('user_id', $this->id)
+            ->orWhereHas('members', function ($query){
+                $query->where('user_id', $this->id);
+            })
+            ->get();
+    }
 }

@@ -5,13 +5,13 @@
 
     <div class="flex items-center">
         @foreach($project->members as $member)
-            <img src="{{ $member->gravatar }}"
+            <img src="{{ gravatar_url($member->email) }}"
                  alt=" {{ $member->name }}'s avatar"
                  class="rounded-full w-8 mr-2"
             >
         @endforeach
 
-        <img src="{{ $project->owner->gravatar }}"
+        <img src="{{ gravatar_url($project->owner->email) }}"
              alt="{{ $project->owner->gravatar }}'s avatar"
              class="rounded-full w-8"
         >

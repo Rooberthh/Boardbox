@@ -69,4 +69,19 @@ class InvitationTest extends TestCase
             'user_id' => $Nicky->id
         ]);
     }
+
+    /** @test */
+    function users_cant_be_invited_twice_to_a_project()
+    {
+        $newUser = create('App\User');
+
+        $this->signIn($this->user);
+
+        $this->post($this->project->path() . '/invite', ['email' => $newUser->email])
+            ->assertRedirect($this->project->path());
+
+        $this->post($this->project->path() . '/invite', ['email' => $newUser->email])
+            ->assertStatus(422);
+
+    }
 }

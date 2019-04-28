@@ -28,7 +28,7 @@
 
             <div class="lg:w-1/4 px-3" v-if="!editing">
                 <div class="w-full mt-8">
-                    <div class="bg-white rounded shadow p-5 min-h-400">
+                    <div class="card">
                         <a href="{{ $project->path() }}" class="text-grey-darkest no-underline">
                             <h3 class="font-normal py-4 text-xl border-l-4 border-red -ml-5 pl-4" v-text="form.title">
                             </h3>
@@ -45,18 +45,36 @@
                         @endcan
 
                     </div>
+
+                    @can('update', $project)
+                        <div class="card mt-8">
+                            <h3 class="text-grey-darker text-xl font-normal mb-3">Invite a User</h3>
+                            <form method="POST" class="mr-auto" action="{{ route('projectInvite.store', ['category' => $project->category, 'project' => $project]) }}">
+                                @csrf
+                                @method('post')
+                                <input type="email"
+                                       placeholder="user@email.com"
+                                       name="email"
+                                       id="email"
+                                       class="input focus:outline-none focus:shadow-outline"
+                                >
+
+                                <button type="submit" class="btn btn-blue my-2 flex ml-auto">Invite</button>
+                            </form>
+
+                        </div>
+                    @endcan
                 </div>
             </div>
 
             <div v-else class="lg:w-1/4 px-3">
                 <div class="w-full mt-8">
-                    <div class="bg-white rounded shadow p-5 min-h-400">
-
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-2 leading-tight focus:outline-none focus:shadow-outline"
+                    <div class="card">
+                        <input class="input focus:outline-none focus:shadow-outline"
                                v-model="form.title">
 
                         <div class="text-grey-dark">
-                            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-2 leading-tight focus:outline-none focus:shadow-outline"
+                            <textarea class="input focus:outline-none focus:shadow-outline"
                                       rows="5"
                                       v-model="form.description"
                                       >

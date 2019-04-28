@@ -51,4 +51,9 @@ class Project extends Model
     {
         return $this->belongsToMany(User::class, 'project_members')->withTimestamps();
     }
+
+    public function hasMember(User $user)
+    {
+        return $this->members()->get()->contains($user);
+    }
 }

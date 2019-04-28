@@ -12,6 +12,7 @@ class ProjectPolicy
 
    public function update(User $user, Project $project)
    {
-        return $project->user_id == $user->id;
+        return $user->is($project->owner) || $project->members->contains($user);
    }
+
 }

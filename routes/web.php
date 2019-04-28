@@ -29,8 +29,9 @@ Route::post('/projects/{category}/{project}/tasks', 'ProjectTasksController@stor
 Route::patch('/projects/{category}/{project}/tasks/{task}', 'ProjectTasksController@update')->name('projectTask.update');
 Route::delete('/projects/{category}/{project}/tasks/{task}', 'ProjectTasksController@destroy')->name('projectTask.destroy');
 
-
 Route::get('/projects/{category}', 'ProjectsController@index')->name('category.index');
 
 Route::get('/me', 'ProfilesController@show')->middleware('auth')->name('profile.show');
 Route::patch('/me', 'ProfilesController@update')->middleware('auth')->name('profile.update');
+
+Route::post('/projects/{category}/{project}/invite', 'ProjectInvitationsController@store')->name('projectInvite.store');

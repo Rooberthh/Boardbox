@@ -27,6 +27,12 @@
             'signedIn' => Auth::check()
         ]) !!};
     </script>
+
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <div id="app" class="bg-grey-lighter min-h-full">

@@ -2,7 +2,7 @@
 @section('content')
 
     @include('breadcrumbs')
-    <project-view :project="{{ $project }}" inline-template>
+    <project-view :project="{{ $project }}" inline-template v-cloak>
         <div class="lg:flex -m-3">
             <div class="lg:w-3/4 px-3">
                 <div class="mb-8">

@@ -38,6 +38,10 @@ class User extends Authenticatable
         'is_admin' => 'boolean'
     ];
 
+    protected $appends = [
+        'gravatar'
+    ];
+
     public function projects()
     {
         return $this->hasMany(Project::class)->latest('updated_at');
@@ -54,6 +58,11 @@ class User extends Authenticatable
     public function getIsAdminAttribute()
     {
         return $this->isAdmin();
+    }
+
+    public function getGravatarAttribute()
+    {
+        return 'https://www.gravatar.com/avatar/' . md5(strtolower($this->email));
     }
 
     public function accessibleProjects()

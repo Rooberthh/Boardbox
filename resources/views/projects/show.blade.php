@@ -47,22 +47,7 @@
                     </div>
 
                     @can('update', $project)
-                        <div class="card mt-8">
-                            <h3 class="text-grey-darker text-xl font-normal mb-3">Invite a User</h3>
-                            <form method="POST" class="mr-auto" action="{{ route('projectInvite.store', ['category' => $project->category, 'project' => $project]) }}">
-                                @csrf
-                                @method('post')
-                                <input type="email"
-                                       placeholder="user@email.com"
-                                       name="email"
-                                       id="email"
-                                       class="input focus:outline-none focus:shadow-outline"
-                                >
-
-                                <button type="submit" class="btn btn-blue my-2 flex ml-auto">Invite</button>
-                            </form>
-
-                        </div>
+                        <project-invitation></project-invitation>
                     @endcan
                 </div>
             </div>

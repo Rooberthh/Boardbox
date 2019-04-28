@@ -22,6 +22,7 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component("project-view", require('./pages/ProjectView.vue').default);
+Vue.component("project-invitation", require('./components/ProjectInvitation.vue').default);
 Vue.component("update-user-form", require('./components/update-user-form.vue').default);
 
 Vue.component("tasks", require('./components/Tasks.vue').default);

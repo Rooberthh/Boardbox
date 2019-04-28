@@ -29,7 +29,9 @@ class ProjectInvitationsController extends Controller
         $user = User::where('email', request('email'))->first();
 
         if($project->hasMember($user)){
-            return response($user->email . ' is already a part of the project', 422);
+            return response()->json([
+                'message' => 'User is already a part of the project'
+            ], 422);
         }
 
         $project->invite($user);

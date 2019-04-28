@@ -82,6 +82,5 @@ class InvitationTest extends TestCase
 
         $this->post($this->project->path() . '/invite', ['email' => $newUser->email])
             ->assertStatus(422);
-
     }
 }

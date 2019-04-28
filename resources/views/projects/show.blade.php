@@ -1,7 +1,22 @@
 @extends('layouts.app')
 @section('content')
-
+    <header class="flex justify-between">
     @include('breadcrumbs')
+
+    <div class="flex items-center">
+        @foreach($project->members as $member)
+            <img src="{{ $member->gravatar }}"
+                 alt=" {{ $member->name }}'s avatar"
+                 class="rounded-full w-8 mr-2"
+            >
+        @endforeach
+
+        <img src="{{ $project->owner->gravatar }}"
+             alt="{{ $project->owner->gravatar }}'s avatar"
+             class="rounded-full w-8"
+        >
+    </div>
+    </header>
     <project-view :project="{{ $project }}" inline-template v-cloak>
         <div class="lg:flex -m-3">
             <div class="lg:w-3/4 px-3">

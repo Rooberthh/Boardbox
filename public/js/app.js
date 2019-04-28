@@ -1929,17 +1929,17 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     update: function update() {
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.patch(this.endpoint, this.form)["catch"](function (error) {
-        console.log(error);
-      }).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.patch(this.endpoint, this.form).then(function (response) {
         console.log(response.data);
+      })["catch"](function (error) {
+        console.log(error);
       });
     },
     remove: function remove() {
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"](this.endpoint, this.id)["catch"](function (error) {
-        console.log(error);
-      }).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"](this.endpoint, this.id).then(function (response) {
         console.log(response.data);
+      })["catch"](function (error) {
+        console.log(error);
       });
       this.$emit('deleted');
     }
@@ -2089,10 +2089,10 @@ __webpack_require__.r(__webpack_exports__);
     update: function update() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.patch('/me', this.form)["catch"](function (error) {
-        _this.errors = error.response.data.errors;
-      }).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.patch('/me', this.form).then(function (response) {
         console.log(response.data);
+      })["catch"](function (error) {
+        _this.errors = error.response.data.errors;
       });
     }
   }
@@ -2135,10 +2135,10 @@ __webpack_require__.r(__webpack_exports__);
     update: function update() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.patch(location.pathname, this.form)["catch"](function (error) {
-        console.log(error);
-      }).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.patch(location.pathname, this.form).then(function (response) {
         _this.editing = false;
+      })["catch"](function (error) {
+        console.log(error);
       });
     },
     destroy: function destroy() {

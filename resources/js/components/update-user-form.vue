@@ -60,11 +60,11 @@
         methods: {
             update() {
                 axios.patch('/me', this.form)
-                    .catch(error => {
-                        this.errors = error.response.data.errors;
-                    })
                     .then(response => {
                         console.log(response.data);
+                    })
+                    .catch(error => {
+                        this.errors = error.response.data.errors;
                     })
             }
         }

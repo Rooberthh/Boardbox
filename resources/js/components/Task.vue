@@ -31,20 +31,20 @@
         methods: {
             update() {
                 axios.patch(this.endpoint, this.form)
-                    .catch(error => {
-                        console.log(error);
-                    })
                     .then(response => {
                         console.log(response.data);
+                    })
+                    .catch(error => {
+                        console.log(error);
                     });
             },
             remove() {
                 axios.delete(this.endpoint, this.id)
-                    .catch(error => {
-                        console.log(error);
-                    })
                     .then(response => {
                         console.log(response.data);
+                    })
+                    .catch(error => {
+                        console.log(error);
                     });
 
                 this.$emit('deleted');

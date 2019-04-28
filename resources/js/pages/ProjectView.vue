@@ -21,11 +21,11 @@
 
             update() {
                 axios.patch(location.pathname, this.form)
-                    .catch(error => {
-                        console.log(error);
-                    })
                     .then(response => {
                         this.editing = false;
+                    })
+                    .catch(error => {
+                        console.log(error);
                     });
             },
 

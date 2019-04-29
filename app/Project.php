@@ -45,11 +45,7 @@ class Project extends Model
 
     public function invite(User $user)
     {
-       $this->members()
-            ->where('user_id', '!=', auth()->id())
-            ->get()
-            ->each
-            ->notify(new ProjectMemberWasAdded($this, $user));
+        $this->NotifyProjectMembers($user);
 
         $this->members()->attach($user);
     }
@@ -62,5 +58,14 @@ class Project extends Model
     public function hasMember(User $user)
     {
         return $this->members()->get()->contains($user);
+    }
+
+    protected function NotifyProjectMembers(User $member)
+    {
+        $this->members()
+            ->where('user_id', '!=', auth()->id())
+            ->get()
+            ->each
+            ->notify(new ProjectMemberWasAdded($this, $member));
     }
 }

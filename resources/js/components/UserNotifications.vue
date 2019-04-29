@@ -10,7 +10,6 @@
                    v-text="notification.data.message"
                    @click="markAsRead(notification)"
                 >
-
                 </a>
             </div>
         </div>
@@ -23,10 +22,11 @@
     export default {
         data() {
             return {
+                open: false,
                 notifications: {}
             }
         },
-        computed() {
+        created() {
             axios.get('/me/notifications')
                 .then(response =>{
                     this.notifications = response.data;
@@ -34,6 +34,11 @@
                 .catch(error => {
                     console.log(error);
                 })
+        },
+        methods: {
+            markAsRead(notification) {
+                axios.delete('/me/notifications/' + notification.id)
+            }
         }
     }
 </script>

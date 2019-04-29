@@ -16,6 +16,8 @@
                             <a class="text-white no-underline" href="{{ route('register') }}">{{ __('Register') }}</a>
                         @endif
                     @else
+                        <user-notifications></user-notifications>
+
                         <a class="text-white no-underline mr-6" href="{{ route('profile.show') }}">
                             {{ auth()->user()->name }}
                         </a>

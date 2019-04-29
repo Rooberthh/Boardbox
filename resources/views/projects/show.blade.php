@@ -10,11 +10,6 @@
                  class="rounded-full w-8 mr-2"
             >
         @endforeach
-
-        <img src="{{ gravatar_url($project->owner->email) }}"
-             alt="{{ $project->owner->gravatar }}'s avatar"
-             class="rounded-full w-8"
-        >
     </div>
     </header>
     <project-view :project="{{ $project }}" inline-template v-cloak>

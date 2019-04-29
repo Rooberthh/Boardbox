@@ -24,6 +24,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component("project-view", require('./pages/ProjectView.vue').default);
 Vue.component("project-invitation", require('./components/ProjectInvitation.vue').default);
 Vue.component("update-user-form", require('./components/update-user-form.vue').default);
+Vue.component("user-notifications", require('./components/UserNotifications.vue').default);
 
 Vue.component("tasks", require('./components/Tasks.vue').default);
 Vue.component("task", require('./components/Task.vue').default);

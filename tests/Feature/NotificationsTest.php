@@ -24,24 +24,67 @@ class NotificationsTest extends TestCase
     {
         $this->signIn($this->user);
 
-        $John = create('App\User', [
-            'name' => 'John'
-        ]);
-
-        $Nicky = create('App\User', [
-            'name' => 'Nicky'
-        ]);
+        $John = create('App\User');
+        $Nicky = create('App\User');
 
         $project = create('App\Project', [
             'user_id' => $this->user->id
         ]);
 
         $project->invite($John);
-
         $project->invite($Nicky);
 
         $this->assertCount(1, $John->fresh()->notifications);
-
         $this->assertCount(0, auth()->user()->fresh()->notifications);
+    }
+
+    /** @test */
+    function a_user_can_fetch_their_unread_notifications()
+    {
+        $this->signIn($this->user);
+
+        $John = create('App\User');
+        $Nicky = create('App\User');
+
+        $project = create('App\Project', [
+            'user_id' => $this->user->id
+        ]);
+
+        $project->invite($John);
+        $project->invite($Nicky);
+
+        $this->signIn($John);
+
+        $response = $this->getJson('/me/notifications')->json();
+
+        $this->assertCount(1, $response);
+    }
+
+    /** @test */
+    function a_user_can_mark_notifications_as_read()
+    {
+        $this->withExceptionHandling();
+
+        $this->signIn($this->user);
+
+        $John = create('App\User');
+        $Nicky = create('App\User');
+
+        $project = create('App\Project', [
+            'user_id' => $this->user->id
+        ]);
+
+        $project->invite($John);
+        $project->invite($Nicky);
+
+        $this->signIn($John);
+
+        $this->assertCount(1, $John->unreadNotifications);
+
+        $notificationId = $John->unreadNotifications->first()->id;
+
+        $this->deleteJson("/me/notifications/{$notificationId}");
+
+        $this->assertCount(0, $John->fresh()->unreadNotifications);
     }
 }

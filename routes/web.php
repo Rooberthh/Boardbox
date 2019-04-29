@@ -34,4 +34,7 @@ Route::get('/projects/{category}', 'ProjectsController@index')->name('category.i
 Route::get('/me', 'ProfilesController@show')->middleware('auth')->name('profile.show');
 Route::patch('/me', 'ProfilesController@update')->middleware('auth')->name('profile.update');
 
+Route::get('/me/notifications', 'UserNotificationsController@index');
+Route::delete('/me/notifications/{notification}', 'UserNotificationsController@destroy');
+
 Route::post('/projects/{category}/{project}/invite', 'ProjectInvitationsController@store')->name('projectInvite.store');

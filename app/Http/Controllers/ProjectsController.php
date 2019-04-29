@@ -48,6 +48,8 @@ class ProjectsController extends Controller
             'description' => request('description')
         ]);
 
+        $project->members()->attach(auth()->user());
+
         if(request()->wantsJson()){
             return response($project, 200);
         }

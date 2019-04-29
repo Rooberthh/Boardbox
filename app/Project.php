@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Notifications\ProjectMemberWasAdded;
 use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
@@ -44,6 +45,12 @@ class Project extends Model
 
     public function invite(User $user)
     {
+       $this->members()
+            ->where('user_id', '!=', auth()->id())
+            ->get()
+            ->each
+            ->notify(new ProjectMemberWasAdded($this, $user));
+
         $this->members()->attach($user);
     }
 

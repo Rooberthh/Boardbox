@@ -45,4 +45,19 @@ class ProjectTest extends TestCase
         $this->assertCount(1, $project->tasks);
         $this->assertTrue($project->tasks->contains($task));
     }
+
+    /** @test */
+    function a_project_has_members()
+    {
+        $user = create('App\User');
+        $John = create('App\User');
+        $Sally = create('App\User');
+
+        $project = create('App\Project', ['user_id' => $user->id]);
+
+        $project->invite($John);
+        $project->invite($Sally);
+
+        $this->assertCount(2, $project->members);
+    }
 }

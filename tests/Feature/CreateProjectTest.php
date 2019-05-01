@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Project;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -55,6 +56,16 @@ class CreateProjectTest extends TestCase
             ->assertStatus(204);
 
         $this->assertDatabaseMissing('projects', ['title' => $project->title, 'category_id' => $project->category_id]);
+    }
+
+    /** @test */
+    function a_project_creator_is_set_as_a_member_when_a_project_is_created()
+    {
+        $this->signIn();
+
+        $this->publishProject();
+
+        $this->assertTrue(Project::all()->first()->members->contains(auth()->user()));
     }
 
     protected function publishProject($overrides = [])

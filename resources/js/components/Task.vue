@@ -1,14 +1,13 @@
 <template>
-    <div class="card mb-3">
+    <div class="card p-2 mb-3">
+        <div class="flex items-center">
+            <input type="text" class="text-default w-full leading-loose" :class="form.completed ? 'line-through' : ''" name="body" v-model="form.body">
 
-            <div class="flex items-center">
-                <input type="text" class="text-default w-full" name="body" v-model="form.body">
 
+            <input type="checkbox" name="completed" v-model="form.completed" @change="update()">
 
-                <input type="checkbox" name="completed" v-model="form.completed" @change="update()">
-
-                <i v-if="canUpdate" class="fas fa-trash" @click="remove()"></i>
-            </div>
+            <i v-if="canUpdate" class="fas fa-trash" @click="remove()"></i>
+        </div>
     </div>
 </template>
 
@@ -25,7 +24,7 @@
                     completed: this.task.completed,
                 },
                 creator: this.task.creator,
-                endpoint: location.pathname + '/tasks/' + this.task.id,
+                endpoint: location.pathname + '/tasks/' + this.task.id
             }
         },
         methods: {
@@ -53,7 +52,7 @@
         computed: {
             canUpdate(){
                 return this.authorize(user => this.creator === user.id);
-            }
+            },
         }
     }
 </script>
@@ -64,4 +63,5 @@
         cursor: pointer;
         color: #444;
     }
+
 </style>

@@ -1,7 +1,7 @@
 <template>
-    <div class="bg-white rounded shadow p-4 mb-3">
+    <div class="card p-2  mb-3">
         <form @submit.prevent="addTask">
-            <input type="text" placeholder="Add a new Task..." value="" class="text-default bg-card w-full" name="body" v-model="body">
+            <input type="text" placeholder="Add a new Task..." class="text-default w-full leading-loose" name="body" v-model="body">
         </form>
     </div>
 </template>

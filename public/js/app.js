@@ -1912,7 +1912,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['task'],
@@ -37940,7 +37939,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "bg-white rounded shadow p-4 mb-3" }, [
+  return _c("div", { staticClass: "card p-2  mb-3" }, [
     _c(
       "form",
       {
@@ -37961,11 +37960,10 @@ var render = function() {
               expression: "body"
             }
           ],
-          staticClass: "text-default bg-card w-full",
+          staticClass: "text-default w-full leading-loose",
           attrs: {
             type: "text",
             placeholder: "Add a new Task...",
-            value: "",
             name: "body"
           },
           domProps: { value: _vm.body },
@@ -38084,7 +38082,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card mb-3" }, [
+  return _c("div", { staticClass: "card p-2 mb-3" }, [
     _c("div", { staticClass: "flex items-center" }, [
       _c("input", {
         directives: [
@@ -38095,7 +38093,8 @@ var render = function() {
             expression: "form.body"
           }
         ],
-        staticClass: "text-default w-full",
+        staticClass: "text-default w-full leading-loose",
+        class: _vm.form.completed ? "line-through" : "",
         attrs: { type: "text", name: "body" },
         domProps: { value: _vm.form.body },
         on: {

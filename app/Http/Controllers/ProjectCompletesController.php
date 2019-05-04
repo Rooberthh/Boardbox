@@ -10,6 +10,8 @@ class ProjectCompletesController extends Controller
 {
     public function store(Category $category, Project $project)
     {
+        $this->authorize('manage', $project);
+
         $project->complete();
 
         return response('Marked as complete', 200);
@@ -17,6 +19,8 @@ class ProjectCompletesController extends Controller
 
     public function destroy(Category $category, Project $project)
     {
+        $this->authorize('manage', $project);
+        
         $project->incomplete();
 
         return response('Marked as incomplete', 200);

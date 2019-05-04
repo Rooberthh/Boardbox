@@ -9,6 +9,10 @@ class Project extends Model
 {
     protected $fillable = ['title', 'description', 'user_id', 'category_id', 'completed'];
 
+    protected $casts = [
+        'completed' => 'boolean'
+    ];
+
     protected static function boot()
     {
         parent::boot();

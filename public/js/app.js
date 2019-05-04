@@ -2179,7 +2179,8 @@ __webpack_require__.r(__webpack_exports__);
       form: {
         description: this.project.description,
         title: this.project.title
-      }
+      },
+      completed: this.project.completed
     };
   },
   methods: {
@@ -2199,6 +2200,15 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"](location.pathname)["catch"](function (error) {
         console.log(error);
       });
+    },
+    togglePin: function togglePin() {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a[this.completed ? "delete" : "post"](this.pinnedEndpoint);
+      this.completed = !this.completed;
+    }
+  },
+  computed: {
+    pinnedEndpoint: function pinnedEndpoint() {
+      return location.pathname + '/complete';
     }
   }
 });

@@ -22,7 +22,10 @@
             </div>
 
             <div class="lg:w-1/4 px-3" v-if="!editing">
-                <div class="w-full mt-8">
+                <div class="flex">
+                    <a class="ml-auto btn btn-blue" href="#"  @click="togglePin" v-text="completed ? 'Incomplete' : 'Complete'"></a>
+                </div>
+                <div class="w-full ">
                     <div class="card">
                         <a href="{{ $project->path() }}" class="text-grey-darkest no-underline">
                             <h3 class="font-normal py-4 text-xl border-l-4 border-red -ml-5 pl-4" v-text="form.title">

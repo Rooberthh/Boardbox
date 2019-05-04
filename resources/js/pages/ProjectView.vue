@@ -11,7 +11,8 @@
                 form: {
                     description: this.project.description,
                     title: this.project.title
-                }
+                },
+                completed: this.project.completed
             }
         },
         methods: {
@@ -34,6 +35,16 @@
                     .catch(error => {
                         console.log(error)
                     });
+            },
+            togglePin() {
+                axios[this.completed ? "delete" : "post"](this.pinnedEndpoint);
+
+                this.completed = !this.completed;
+            }
+        },
+        computed: {
+            pinnedEndpoint() {
+                return location.pathname + '/complete'
             }
         }
     }

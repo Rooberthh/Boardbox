@@ -25,6 +25,11 @@ Route::get('/projects/{category}/{project}', 'ProjectsController@show')->name('p
 Route::delete('/projects/{category}/{project}', 'ProjectsController@destroy')->name('projects.destroy');
 Route::patch('/projects/{category}/{project}', 'ProjectsController@update')->name('projects.update');
 
+Route::post('/projects/{category}/{project}/invite', 'ProjectInvitationsController@store')->name('projectInvite.store');
+
+Route::post('/projects/{category}/{project}/complete', 'ProjectCompletesController@store')->name('projectComplete.store');
+Route::delete('/projects/{category}/{project}/complete', 'ProjectCompletesController@destroy')->name('projectComplete.destroy');
+
 Route::post('/projects/{category}/{project}/tasks', 'ProjectTasksController@store')->name('projectTask.store');
 Route::patch('/projects/{category}/{project}/tasks/{task}', 'ProjectTasksController@update')->name('projectTask.update');
 Route::delete('/projects/{category}/{project}/tasks/{task}', 'ProjectTasksController@destroy')->name('projectTask.destroy');
@@ -37,4 +42,3 @@ Route::patch('/me', 'ProfilesController@update')->middleware('auth')->name('prof
 Route::get('/me/notifications', 'UserNotificationsController@index');
 Route::delete('/me/notifications/{notification}', 'UserNotificationsController@destroy');
 
-Route::post('/projects/{category}/{project}/invite', 'ProjectInvitationsController@store')->name('projectInvite.store');

@@ -31,7 +31,7 @@ class Task extends Model
         return $this->belongsTo(Project::class);
     }
 
-    function completed()
+    function complete()
     {
         $this->update(['completed' => true]);
     }
@@ -40,7 +40,6 @@ class Task extends Model
     {
         $this->update(['completed' => false]);
     }
-
 
     public function path()
     {

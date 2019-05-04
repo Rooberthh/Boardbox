@@ -66,12 +66,13 @@
                                 <button @click="edit" type="button" class="btn btn-outline mr-auto">Cancel</button>
                                 <button @click="update" class="btn btn-outline ml-auto">Update</button>
                             </div>
-
-                            <form method="POST" class="mr-auto" action="{{ route('projects.destroy', ['category' => $project->category, 'project' => $project]) }}">
-                                @csrf
-                                @method('delete')
-                                <button type="submit" class="btn text-grey-darkest">Delete</button>
-                            </form>
+                            @can('manage', $project)
+                                <form method="POST" class="mr-auto" action="{{ route('projects.destroy', ['category' => $project->category, 'project' => $project]) }}">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn text-grey-darkest">Delete</button>
+                                </form>
+                            @endcan
                         @endcan
 
                     </div>

@@ -21,6 +21,7 @@ class CreateProjectsTable extends Migration
             $table->unsignedInteger('category_id');
             $table->string('title');
             $table->text('description');
+            $table->boolean('completed')->default(false);
             $table->timestamps();
         });
     }

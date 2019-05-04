@@ -5,7 +5,7 @@
         <a class="btn btn-blue" href="{{ route('projects.create') }}">New Project</a>
     </div>
     @if(auth()->user())
-        <h3 class="text-grey-darkest mb-5">Your projects</h3>
+        <h3 class="text-grey-darkest mb-5">Your currently active projects</h3>
         <div class="flex flex-wrap -mx-3">
             @foreach($user_projects as $project)
                 @include('projects.card')

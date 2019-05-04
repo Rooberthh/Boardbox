@@ -19,7 +19,7 @@ class ProjectsController extends Controller
         $projects = $this->getProjects($category);
 
         if(auth()->user()){
-            $user_projects = auth()->user()->projects->take(3);
+            $user_projects = auth()->user()->accessibleProjects()->take(3);
         } else {
             $user_projects = null;
         }

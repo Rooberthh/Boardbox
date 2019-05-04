@@ -47,7 +47,7 @@ class ProjectTest extends TestCase
     }
 
     /** @test */
-    function a_project_has_members()
+    function it_has_members()
     {
         $user = create('App\User');
         $John = create('App\User');
@@ -59,5 +59,24 @@ class ProjectTest extends TestCase
         $project->invite($Sally);
 
         $this->assertCount(2, $project->members);
+    }
+
+    /** @test */
+    function it_can_be_marked_as_complete()
+    {
+        $project = create('App\Project');
+
+        $project->complete();
+
+        $this->assertTrue($project->completed);
+    }
+
+    /** @test */
+    function it_can_be_marked_as_incomplete()
+    {
+        $project = create('App\Project', ['completed' => true]);
+        $project->incomplete();
+
+        $this->assertFalse($project->completed);
     }
 }

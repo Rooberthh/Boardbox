@@ -62,6 +62,7 @@ class User extends Authenticatable
             ->orWhereHas('members', function ($query){
                 $query->where('user_id', $this->id);
             })
+            ->orderBy('updated_at', 'desc')
             ->get();
     }
 }

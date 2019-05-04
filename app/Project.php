@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    protected $fillable = ['title', 'description', 'user_id', 'category_id'];
+    protected $fillable = ['title', 'description', 'user_id', 'category_id', 'completed'];
 
     protected static function boot()
     {
@@ -58,6 +58,16 @@ class Project extends Model
     public function hasMember(User $user)
     {
         return $this->members()->get()->contains($user);
+    }
+
+    function complete()
+    {
+        $this->update(['completed' => true]);
+    }
+
+    function incomplete()
+    {
+        $this->update(['completed' => false]);
     }
 
     protected function NotifyProjectMembers(User $member)

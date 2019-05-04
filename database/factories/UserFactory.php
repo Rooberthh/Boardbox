@@ -36,7 +36,8 @@ $factory->define(Project::class, function (Faker $faker) {
             return factory('App\User')->create()->id;
         },
         'description' => $faker->sentence,
-        'category_id' => factory('App\Category')->create()->id
+        'category_id' => factory('App\Category')->create()->id,
+        'completed' => false
     ];
 });
 
@@ -49,7 +50,8 @@ $factory->state(Project::class, 'from_existing_categories_and_users', function (
         'description' => $faker->sentence,
         'category_id' => function () {
             return Category::all()->random()->id;
-        }
+        },
+        'completed' => false
     ];
 });
 

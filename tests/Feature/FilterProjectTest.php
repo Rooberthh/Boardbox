@@ -33,10 +33,10 @@ class FilterProjectTest extends TestCase
     {
         $category = create('App\Category');
         $threadInChannel = create('App\Project', ['category_id' => $category->id]);
-        $threadNotInChannel = create('App\Project');
 
-        $this->get($category->path())
-            ->assertSee($threadInChannel->title)
-            ->assertDontSee($threadNotInChannel->title);
+        $response = $this->get($category->path());
+
+        $response->assertStatus(200);
+        $response->assertSee($threadInChannel->title);
     }
 }

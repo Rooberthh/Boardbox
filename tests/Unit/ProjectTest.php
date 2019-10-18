@@ -5,7 +5,7 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class ProjectTest extends TestCase
+class wProjectTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -75,6 +75,7 @@ class ProjectTest extends TestCase
     function it_can_be_marked_as_incomplete()
     {
         $project = create('App\Project', ['completed' => true]);
+
         $project->incomplete();
 
         $this->assertFalse($project->completed);

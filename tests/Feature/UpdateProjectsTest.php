@@ -80,4 +80,24 @@ class UpdatesProjectsTest extends TestCase
 
         $this->assertFalse($project->fresh()->completed);
     }
+
+    /** @test */
+    function a_project_owner_can_make_a_project_private()
+    {
+        $project = create('App\Project', ['user_id' => auth()->id()]);
+
+        $this->postJson($project->path() . '/private');
+
+        $this->assertTrue($project->fresh()->private);
+    }
+
+    /** @test */
+    function a_project_owner_can_make_a_project_public()
+    {
+        $project = create('App\Project', ['user_id' => auth()->id()]);
+
+        $this->deleteJson($project->path() . '/private');
+
+        $this->assertFalse($project->fresh()->private);
+    }
 }

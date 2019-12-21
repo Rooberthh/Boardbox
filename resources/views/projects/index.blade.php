@@ -5,7 +5,7 @@
         <a class="btn btn-blue" href="{{ route('projects.create') }}">New Project</a>
     </div>
     @if(auth()->user())
-        <h3 class="text-grey-darkest mb-5">Your currently active projects</h3>
+        <h2 class="text-grey-darkest mb-5 text-lg">Your currently active projects</h2>
         <div class="flex flex-wrap -mx-3">
             @foreach($user_projects as $project)
                 @include('projects.card')
@@ -13,13 +13,11 @@
         </div>
     @endif
 
-    <h3 class="text-grey-darkest mb-5">Projects</h3>
+    <h3 class="text-grey-darkest mb-5 text-lg">Projects</h3>
 
     <div class="flex flex-wrap -mx-3">
         @forelse($projects as $project)
-
                 @include('projects.card')
-
         @empty
             <p>There are no projects in this category.</p>
         @endforelse

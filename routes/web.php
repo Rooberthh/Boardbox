@@ -30,6 +30,9 @@ Route::post('/projects/{category}/{project}/invite', 'ProjectInvitationsControll
 Route::post('/projects/{category}/{project}/complete', 'ProjectCompletesController@store')->name('projectComplete.store');
 Route::delete('/projects/{category}/{project}/complete', 'ProjectCompletesController@destroy')->name('projectComplete.destroy');
 
+Route::post('/projects/{category}/{project}/private', 'ProjectPrivatesController@store')->name('projectPrivate.store');
+Route::delete('/projects/{category}/{project}/private', 'ProjectPrivatesController@destroy')->name('projectPrivate.destroy');
+
 Route::post('/projects/{category}/{project}/tasks', 'ProjectTasksController@store')->name('projectTask.store');
 Route::patch('/projects/{category}/{project}/tasks/{task}', 'ProjectTasksController@update')->name('projectTask.update');
 Route::delete('/projects/{category}/{project}/tasks/{task}', 'ProjectTasksController@destroy')->name('projectTask.destroy');

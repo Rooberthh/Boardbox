@@ -51,7 +51,8 @@ $factory->state(Project::class, 'from_existing_categories_and_users', function (
         'category_id' => function () {
             return Category::all()->random()->id;
         },
-        'completed' => false
+        'completed' => false,
+        'private' => false
     ];
 });
 

@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    protected $fillable = ['title', 'description', 'user_id', 'category_id', 'completed'];
+    protected $fillable = ['title', 'description', 'user_id', 'category_id', 'completed', 'private'];
 
     protected $casts = [
-        'completed' => 'boolean'
+        'completed' => 'boolean',
+        'private' => 'boolean'
     ];
 
     protected static function boot()
@@ -72,6 +73,16 @@ class Project extends Model
     function incomplete()
     {
         $this->update(['completed' => false]);
+    }
+
+    function public()
+    {
+        $this->update(['private' => false]);
+    }
+
+    function private()
+    {
+        $this->update(['private' => true]);
     }
 
     protected function NotifyProjectMembers(User $member)

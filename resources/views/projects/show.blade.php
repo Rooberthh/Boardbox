@@ -25,7 +25,16 @@
                 <div class="w-full mt-8">
                     <div class="card">
                         <a href="{{ $project->path() }}" class="text-grey-darkest no-underline">
-                            <h3 class="font-normal py-4 text-xl border-l-4 border-red -ml-5 pl-4" v-text="form.title">
+                            <h3 class="font-normal py-4 text-xl border-l-4 border-red -ml-5 pl-4 flex">
+                                <div class="flex-auto">
+                                    {{ $project->title }}
+                                </div>
+
+                                @if($project->private)
+                                    <div class="flex-shrink">
+                                        <i class="fas fa-lock text-right"></i>
+                                    </div>
+                                @endif
                             </h3>
                         </a>
 
